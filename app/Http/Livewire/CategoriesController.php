@@ -160,7 +160,7 @@ class CategoriesController extends Component
    ];
   public function Destroy ( Category $category)
   {
-   // $category = Category::find ($id);
+    //$category = Category::find ($id);
    //dd($category);
 
     $imageName =$category->image ;

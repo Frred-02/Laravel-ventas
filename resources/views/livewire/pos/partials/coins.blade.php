@@ -23,7 +23,7 @@
                         <div class="input-group input-group-md mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text input-gp hideonsm" style="background: #3B3F5C; 
-                                color:red">EFECTIVO F9
+                                color:wite">EFECTIVO F8
 
                                 </span>
                             </div>
@@ -31,8 +31,9 @@
                             wire:model="efectivo"
                             wire:keydown.enter="saveSale"
                             class="form-control text-center" value="{{$efectivo}}">
+
                             <div class="input-group-append">
-                                <span wire :click="$set('efectivo' , 0)" class="input-group-text" style ="background: 
+                                <span wire :click="$set('efectivo' , 0)" class="input-group-text" style ="background: #3B3F5C; 
                                 color:wite">
                                    <i class="fas fa-backspace fa-2x"></i>
                                     
@@ -41,16 +42,17 @@
                         </div>
                         <h4 class="text-muted">Canbio: ${{number_format($change,2)}}</h4>
                         <div class="row justify-content-between mt-5">
-                            <div class="col-sm-12 col-md12 col-lg-6">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
                                 @if($total > 0)
-                                <button onclik="Confirm('', 'clearCart','¿seguro de eliminar el carrito? ')" class="btn btn-dark mtmobile">
+                                <button onclik="Confirm('','clearCart','¿seguro de eliminar el carrito? ')" class="btn btn-dark mtmobile">
                                     CANCELAR F4
                                 </button>
                                 @endif
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-6">
                                 @if($efectivo>= $total && $total > 0)
-                                <button wire:click.prevent="saveSale" class="btn btn-dark btn-md btn-block">GUARDAR F9</button>
+                                <button wire:click.prevent="saveSale" class="btn btn-dark btn-md btn-block">
+                                    GUARDAR F9</button>
                                 @endif
                             </div>
 

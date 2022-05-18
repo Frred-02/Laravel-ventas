@@ -15,7 +15,7 @@
                         <thead class="text-white" style="background: #3B3F5C">
 
                            <tr>
-                               <th width="10"></th>
+                               <th width="10%"></th>
                                <th class="table-th text-left text-white">DESCRIPCION</th>
                                <th class="table-th text-center text-white">PRECIO</th>
                                <th width="13%" class="table-th text-center text-white">CANT</th>
@@ -27,13 +27,14 @@
 
                      </thead>
                               <tbody>
-                                  @foreach($cart as$item)
+                                  @foreach($cart as $item)
                                   <tr>
 
                                   <td class="text-center table-th">
                                       @if(count($item->attributes) > 0)
                                    <span>
-                                   <img src="{{ asset('storage/products/' .$item->attributes[0]) }}" alt="imagen de producto" height="90" width="90" class="rounded">
+                                   <img src="{{ asset('storage/products/' .$item->attributes[0]) }}" alt="imagen 
+                                   de producto" height="90" width="90" class="rounded">
 
                                    </span>
                                    @endif
@@ -42,13 +43,13 @@
                                      
                                     <td><h6>{{$item->name}}</h6></td>
                                     <!--pintar la descripcion del producto-->
-                                    <td class="text-center">${{number_formart($item->price,2)}}</td>
+                                    <td class="text-center">${{number_format($item->price,2)}}</td>
 
                                     <td>
                                         <!---->
                                         <input type="number" id="r{{$item->id}}"
                                         wire:change="updateQty({{$item->id}}, $('#r' + {{$item->id}}).val())" 
-                                        style="font-size:1rem!import"
+                                        style="font-size: 1rem!important"
                                         class="form-control text-center"
                                         value="{{$item->quantity}}"  >
                                         

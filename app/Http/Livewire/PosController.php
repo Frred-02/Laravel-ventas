@@ -8,6 +8,9 @@ use Darryldecode\cart\Facades\CartFacade as Cart;
 
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Sale;
+use App\Models\SaleDetails;
+
 
 
 
@@ -16,7 +19,7 @@ use DB;
 class PosController extends Component
 {
 
-    public $total, $itemsQuantity, $efectivo, $change ;
+    public $total, $itemsQuantity, $efectivo, $change;
 
     public function mount()
     {
@@ -55,7 +58,7 @@ class PosController extends Component
    {
        /*dd($barcode);*/
        $product = Product::where ('barcode' , $barcode)->first();
-    if($product == null || empty ($empty))
+    if($product == null || empty ($product))
     {
         $this->emit('scan-notfound','el producto no esta registradoooo');
     } else 
@@ -128,7 +131,7 @@ class PosController extends Component
         $title ='';
         $product = Product::find($productId);
         $exist = Cart::get($productId);
-        if (exist)
+        if ($exist)
           $title = 'cantidad  actualizada';
           else
           $title ='productio agregado';
@@ -145,7 +148,7 @@ class PosController extends Component
           $this->removeItem($productId);
           if($cant > 0)
           {
-             Cart:: add($product->id, $product->name, $product->price , $cant, $product->image);
+             Cart::add($product->id, $product->name, $product->price , $cant, $product->image);
  
              $this->total = Cart::getTotal();
              $this->itemsQuantity = Cart::getTotalQuantity();
@@ -158,15 +161,17 @@ class PosController extends Component
           public function removeItem($productId)
           {
            Cart::remove($productId);
+
            $this->total = Cart::getTotal();
-           $this->itemsQuantity =Cart::getTotalQuantity();
+           $this->itemsQuantity = Cart::getTotalQuantity();
+           
           $this->emit('scan-ok' , 'Producto eliminado');
 
-}
+           }
 
        public function decreaseQty($productId)
          {
-         $item = Cart::get($product);
+         $item = Cart::get($productId);
            Cart::remove($productId);
 
              $newQty = ($item->quantity)-1;
@@ -181,7 +186,7 @@ class PosController extends Component
 }
             public function clearCart()
             {
-                 Cart:: clear();
+                 Cart::clear();
                     $this->efectivo =0;
                    $this->change=0;
                 $this->total = Cart::getTotal();
@@ -198,7 +203,7 @@ class PosController extends Component
                     $this->emit('sale-error','agregar productos ala venta');
                     return;
                 }
-                if($this-efectivo <=0)
+                if($this->efectivo <=0)
                 {
                     $this->emit('sale-error','ingresar efectivo');
                     return;
@@ -219,6 +224,8 @@ class PosController extends Component
                            'cash' => $this->efectivo,
                            'change' => $this->change,
                            'user_id' => Auth()->user()->id
+
+                           /*['total','items','cash','change','status','user_id']; */
   
                           ]);
   
@@ -226,11 +233,12 @@ class PosController extends Component
                           {
                               $item= Cart::getContent();
                               foreach($item as $item){
-                                  SaleDetail::create([
+                                  SaleDetails::create([
                                       'price'=> $item->price,
                                       'quantity'=> $item->quantity,
                                       'product_id'=> $item->id,
-                                      'sale_'=> $sale->id,
+
+                                      'sale_id'=> $sale->id,
                                       
                                   ]);
   

@@ -93,6 +93,9 @@ class CategoriesController extends Component
         {
            $customFileName = uniqid() . '_.' . $this->image->extension();
            $this->image->storeAs('public/categories', $customFileName);
+          
+          
+          /* $imageTemp =$category->image;  /*imagen temporal */
            $category->image = $customFileName;
            $category->save();
 

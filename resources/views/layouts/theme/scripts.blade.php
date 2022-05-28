@@ -8,6 +8,8 @@
  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+  
+
 
 
 
@@ -25,6 +27,8 @@
  <script src="{{asset('plugins/notification/snackbar/snackbar.min.js')}}"></script>
  <script src="{{asset('plugins/nicescroll/nicescroll.js')}}"></script>
  <script src="{{asset('plugins/currency/currency.js')}}"></script>
+
+ 
     
 
  <!--envios de  notificaciones  y mensaje -->
@@ -33,12 +37,20 @@
         {
             Snackbar.show({
                 text: msg.toUpperCase(),
-                actionText:'CERRAR',
+                actionText:'cerrar',
                 actionTextColor: '#ffff',
-                backGroundColor: option ==1 ? '3b#3f5c' : '#e7515a',
+                backGroundColor: option ==1 ? '#80ced6' : '#e7515a',
                 pos:'top_right'
             });
         }
+           
+
+        document.addEventListener('DOMContentLoaded', function() {
+        window.livewire.on('global-msg', msg => {
+            noty(msg)
+        });
+    })
+
     </script>
      @livewireScripts
   

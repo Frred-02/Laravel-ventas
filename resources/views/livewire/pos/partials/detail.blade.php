@@ -65,21 +65,38 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <button onclick ="Confirm ('{{$item->id}}', 'removeItem', 'CONFIRMAR ELIMINAR EL REGISTRO')"
+                                          <button onclick ="Confirm('{{$item->id}}', 'removeItem', 'CONFIRMAR ELIMINAR EL REGISTRO')"
                                         class="btn btn-dark mbmobile">
+                                        
+                                     
+
+
                                         <i class="fas fa-trash-alt"></i>
 
 
-                                        </button>
+                                                 </button>
                                              
-                                        <button wire:click.prevent="increaseQty({{$item->id}})" class="btn btn-dark mbmobile">
+                                        <button wire:click.prevent="decreaseQty({{$item->id}})" class="btn btn-dark mbmobile">
                                             <i class="fas fa-minus"></i>
 
                                         </button>
 
+                                      
+                                        
 
 
-                                                      </td>
+                                    </button>
+                                             
+                                        <button wire:click.prevent="increaseQty({{$item->id}})" class="btn btn-dark mbmobile">
+                                            <i class="fas fa-plus"></i>
+
+                                        </button>
+
+
+
+
+
+                             </td>
 
 
                                                        </tr>
@@ -106,3 +123,4 @@
                               </div>
 
 </div>
+

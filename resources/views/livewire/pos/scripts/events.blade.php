@@ -1,6 +1,6 @@
 <script>
 
-        document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
 
     window.livewire.on('scan-ok', Msg =>{
 

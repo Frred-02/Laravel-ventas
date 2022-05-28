@@ -1,24 +1,24 @@
 <script>
-   $(' .tblscroll').nicescroll({
 
-        cursoscolor: "#515365",
-        cursorwidth:"30px",
-        background: "rgba(20,20,20,0,3)",
-        cursorborder: "0px",
-        cursorborderradius:3
+document.addEventListener('DOMContentLoaded', function(){
+        $('.tblscroll').niceScroll({
 
+           cursoscolor: "#515365",
+            cursorwidth:"30px",
+           background: "rgba(20, 20, 20, 0.3)",
+           cursorborder: "0px",
+          cursorborderradius:3
+
+    })
    })
 
-   function Confirm(id,eventName,  text) {
-        if(products > 0)
-        {
-            swal ('nose puede eliminar estan relacionado')
-            return;
-        }
-        // body...        
+   function Confirm(id,eventName,  text) 
+   
+   {
+                
         Swal({
-            title: 'CONFIRMAR BORRADO',
-            text: '¿Está Seguro de Querer Eliminar la Categoria Seleccionada?',
+            title: 'CONFIRMAR ',
+            text: text,
             type: 'warning',
             showCancelButton: true,
             cancelButtonText: 'Cerrar',
@@ -28,7 +28,7 @@
         }).then(function(result) {
             // body...
             if(result.value){
-                window.livewire.emit('eventName', id)
+                window.livewire.emit(eventName, id)
                 Swal.close()
             }
         })

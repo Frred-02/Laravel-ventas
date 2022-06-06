@@ -85,7 +85,7 @@
                                         
 
 
-                                    </button>
+                                    
                                              
                                         <button wire:click.prevent="increaseQty({{$item->id}})" class="btn btn-dark mbmobile">
                                             <i class="fas fa-plus"></i>

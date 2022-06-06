@@ -1,7 +1,7 @@
    <script>      
 
    var listener = new window.keypress.listener();
-listener.simple_combo("f9", function(){
+listener.simple_combo("F9", function(){
            console.log("F9");
     
            livewire.emit('saveSale')

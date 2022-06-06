@@ -33,14 +33,14 @@
 
  <!--envios de  notificaciones  y mensaje -->
     <script>
-        function noty(msg, option =1)
+        function noty(msg, option = 1)
         {
             Snackbar.show({
                 text: msg.toUpperCase(),
-                actionText:'cerrar',
-                actionTextColor: '#ffff',
-                backGroundColor: option ==1 ? '#80ced6' : '#e7515a',
-                pos:'top_right'
+                actionText:'CERRAR',
+                actionTextColor: '#fff',
+                backgroundColor: option == 1 ? '#3b3f5c' : '#e7515a',
+                pos:'top-right'
             });
         }
            
@@ -52,5 +52,7 @@
     })
 
     </script>
+
+<script src="{{ asset('plugins/flatpickr/flatpickr.js')}}"></script>
      @livewireScripts
   

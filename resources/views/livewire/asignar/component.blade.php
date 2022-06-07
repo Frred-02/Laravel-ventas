@@ -5,43 +5,50 @@
 			<div class="widget-heading">
 				<h4 class="card-title"><b>{{$componentName}}</b>
             </h4>			
-				<ul class="tabs tab-pills">					
-									
-				</ul>
+				
 			</div>			
-				search		
-			<div class="widget-content">			
+					
+			<div class="widget-content">	
+                
+            
+                  <div class="form inline">
+                       <div class="form-group mr-5">
+                           <select wire:model = "role" class="form-control"></select>
+                           <option value="Elegir
+                           "selected >==Selecciona el Role ==></option>
+                           @foreach($roles  as role)
+                           <option value="{{$role->id}}">{{$role->name}} </option>
+                           @endforeach
+                       </div>
 
-				<div class="table-responsive">
+                       <button wire:click.prevent="SyncAll()" type="button" class="btn btn-dark mbmobile
+					    inblock mr-5">Sincronizar todos</button>
+
+						<button onclick="Revocar()" type="button" class="btn btn-dark mbmobile
+					    mr-5">Revocar todos</button>
+                  </div>
+
+				
+
+					
+                       <div class="row mt-3">
+
+
+                         <div class="col-sm-12">
+
+
+						 <div class="table-responsive">
 					<table  class="table table-bordered table-striped  mt-1">
 						<thead class="text-white" style="background: #3B3F5C">
 							<tr>
-								<th class="table-th text-white">DESCRIPCIÓN</th>	
-								<th class="table-th text-center text-white">IMAGEN</th>
-								<th class="table-th text-center text-white">ACTIONS</th>
+								<th class="table-th text-white">ID</th>	
+								<th class="table-th text-center text-white">PERMISO</th>
+								<th class="table-th text-center text-white">ROLES CON PERMISO</th>
 							</tr>
 						</thead>
 						<tbody>						
 							<tr>
-								<td><h6>Category Name</h6></td>
-
-								<td class="text-center">
-									<span>
-										<img height="70" width="80" class="rounded" alt="no-image">
-									</span>
-								</td>
-
-								<td class="text-center">	
-									<a href="javascript:void(0)"  class="btn btn-dark mtmobile" title="Edit">
-										<i class="fas fa-edit"></i>
-									</a>
-									
-									<a href="javascript:void(0);"  
-										class="btn btn-dark" title="Delete">
-										<i class="fas fa-trash"></i>
-									</a>				
-
-								</td>
+								
 
 							</tr>
 
@@ -53,6 +60,13 @@
 					
 
 				</div>
+
+
+
+						 </div>
+
+				        </div>
+				
 
 				
 
